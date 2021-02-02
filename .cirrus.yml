@@ -2,8 +2,11 @@ container:
   image: rust:latest
 
 test_task:
-  cargo_cache:
+  registry_cache:
     folder: $CARGO_HOME/registry
+    fingerprint_script: cat Cargo.lock
+  target_cache:
+    folder: target
     fingerprint_script: cat Cargo.lock
   build_script:
     - rustup component add clippy
