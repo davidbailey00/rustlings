@@ -7,7 +7,9 @@ test_task:
     fingerprint_script: cat Cargo.lock
   target_cache:
     folder: target
-    fingerprint_script: cat Cargo.lock
+    fingerprint_script:
+      - rustc --version
+      - cat Cargo.lock
   build_script:
     - rustup component add clippy
     - cargo build
